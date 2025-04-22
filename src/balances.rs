@@ -19,3 +19,13 @@ impl Pallet {
     *self.balances.get(&account).unwrap_or(&0)
   }
 }
+
+#[test]
+fn init_balances() {
+  let mut balances = Pallet::new();
+  assert_eq!(balances.balance("Fabio".to_string()), 0);
+  balances.set_balance("Fabio".to_string(), 10);
+  assert_eq!(balances.balance("Fabio".to_string()), 10);
+  assert_eq!(balances.balance("Vini".to_string()),0);
+
+}
